@@ -98,7 +98,7 @@ function ContentList({
         return () => {
           window.removeEventListener("mousemove", handleMouseMove);
         };
-      }, [currentItem]);
+      }, []);
 
       return asImageSrc(image, {
         fit: "crop",
