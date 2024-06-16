@@ -62,9 +62,16 @@ function Geometries() {
         new THREE.MeshStandardMaterial({ color: 0xFF06B7, roughness: .1}),
         new THREE.MeshStandardMaterial({ color: 0x750E21, roughness: .1}),
         new THREE.MeshStandardMaterial({ color: 0x2980b9, roughness: .1}),
+        new THREE.MeshStandardMaterial({ color: 0x2ecc71, roughness: 0 }),
+        new THREE.MeshStandardMaterial({ color: 0xf1c40f, roughness: 0.4 }),
+        new THREE.MeshStandardMaterial({ color: 0xe74c3c, roughness: 0.1 }),
+        new THREE.MeshStandardMaterial({ color: 0x8e44ad, roughness: 0.1 }),
+        new THREE.MeshStandardMaterial({ color: 0x1abc9c, roughness: 0.1 }),
         new THREE.MeshStandardMaterial({ color: 0x864AF9, metalness: 1, roughness: 0}),
         new THREE.MeshStandardMaterial({ color: 0xFE7A36, metalness: .5, roughness: .4}),
-        new THREE.MeshStandardMaterial({ color: 0x2ecc71, metalness: 1, roughness: .3})
+        new THREE.MeshStandardMaterial({ color: 0x2ecc71, metalness: 1, roughness: .3}),
+        new THREE.MeshStandardMaterial({ color: 0x2980b9, metalness: 0.5, roughness: 0,}),
+        new THREE.MeshStandardMaterial({ color: 0x2c3e50, metalness: 0.5, roughness: 0.1,}),
     ];
 
     const soundEffects = [
