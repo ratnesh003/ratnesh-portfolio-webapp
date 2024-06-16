@@ -29,9 +29,9 @@ export default function RootLayout({
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <Header />
         {children}
-        <Footer />
-        <div className="background-custom absolute inset-0 -z-50 h-screen w-full "></div>
+        <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
         <div className="absolute pointer-events-none inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
+        <Footer />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
