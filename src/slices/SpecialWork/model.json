@@ -1,0 +1,49 @@
+{
+  "id": "special_work",
+  "type": "SharedSlice",
+  "name": "SpecialWork",
+  "description": "SpecialWork",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        },
+        "fallback_cover_image": {
+          "type": "Image",
+          "config": {
+            "label": "Fallback Cover Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "fallback_special_link": {
+          "type": "Link",
+          "config": {
+            "label": "Fallback Special Link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

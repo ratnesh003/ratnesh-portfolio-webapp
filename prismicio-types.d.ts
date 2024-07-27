@@ -102,7 +102,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = SpecialWorkSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -270,6 +270,28 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   hover_image: prismic.ImageField<never>;
+
+  /**
+   * GitHub Link field in *Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: project GitHub repo link
+   * - **API ID Path**: project.github_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  github_link: prismic.LinkField;
+
+  /**
+   * Live Link field in *Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: project live link
+   * - **API ID Path**: project.live_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  live_link: prismic.LinkField;
 
   /**
    * Slice Zone field in *Project*
@@ -859,6 +881,81 @@ export type ImageBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SpecialWork → Primary*
+ */
+export interface SpecialWorkSliceDefaultPrimary {
+  /**
+   * Title field in *SpecialWork → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: special_work.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *SpecialWork → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: special_work.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Fallback Cover Image field in *SpecialWork → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: special_work.primary.fallback_cover_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  fallback_cover_image: prismic.ImageField<never>;
+
+  /**
+   * Fallback Special Link field in *SpecialWork → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: special_work.primary.fallback_special_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  fallback_special_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for SpecialWork Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SpecialWorkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SpecialWorkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SpecialWork*
+ */
+type SpecialWorkSliceVariation = SpecialWorkSliceDefault;
+
+/**
+ * SpecialWork Shared Slice
+ *
+ * - **API ID**: `special_work`
+ * - **Description**: SpecialWork
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SpecialWorkSlice = prismic.SharedSlice<
+  "special_work",
+  SpecialWorkSliceVariation
+>;
+
+/**
  * Primary content in *TechList → Primary*
  */
 export interface TechListSliceDefaultPrimary {
@@ -1020,6 +1117,10 @@ declare module "@prismicio/client" {
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
+      SpecialWorkSlice,
+      SpecialWorkSliceDefaultPrimary,
+      SpecialWorkSliceVariation,
+      SpecialWorkSliceDefault,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,

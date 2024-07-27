@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicImage, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 
 /**
  * Props for `ImageBlock`.
@@ -12,7 +12,7 @@ export type ImageBlockProps = SliceComponentProps<Content.ImageBlockSlice>;
  */
 const ImageBlock = ({ slice }: ImageBlockProps): JSX.Element => {
   return (
-    <PrismicNextImage field={slice.primary.image} />
+    <PrismicNextImage field={slice.primary.image} priority={false} quality={60} className="w-2/3"/>
   );
 };
 

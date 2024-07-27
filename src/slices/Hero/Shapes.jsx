@@ -5,20 +5,19 @@ import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Float, Environment } from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { Play } from "next/font/google";
 
-export default function Shapes(){
+export default function Shapes() {
     return (
         <div className="row-span-1 row-start-1 -mt-9 aspect-square md:col-span-1 md:col-start-2 md:mt-0">
-            <Canvas className="z-0" shadows gl={{antialias:false}} dpr={[1,1.5]} camera={{position: [0, 0, 25], fov:30, near:1, far:40}}>
+            <Canvas className="z-0" shadows gl={{ antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 25], fov: 30, near: 1, far: 40 }}>
                 <Suspense fallback={null}>
-                    <Geometries/>
+                    <Geometries />
                     <ContactShadows
-                    position={[0, -3.5, 0]}
-                    opacity={0.65}
-                    scale={40}
-                    blur={1}
-                    far={9}/>
+                        position={[0, -3.5, 0]}
+                        opacity={0.65}
+                        scale={40}
+                        blur={1}
+                        far={9} />
                     <Environment preset="studio" />
                 </Suspense>
             </Canvas>
@@ -57,21 +56,21 @@ function Geometries() {
 
     const materials = [
         new THREE.MeshNormalMaterial(),
-        new THREE.MeshStandardMaterial({ color: 0xF8E559, roughness: 0}),
-        new THREE.MeshStandardMaterial({ color: 0x3C0753, roughness: .1}),
-        new THREE.MeshStandardMaterial({ color: 0xFF06B7, roughness: .1}),
-        new THREE.MeshStandardMaterial({ color: 0x750E21, roughness: .1}),
-        new THREE.MeshStandardMaterial({ color: 0x2980b9, roughness: .1}),
+        new THREE.MeshStandardMaterial({ color: 0xF8E559, roughness: 0 }),
+        new THREE.MeshStandardMaterial({ color: 0x3C0753, roughness: .1 }),
+        new THREE.MeshStandardMaterial({ color: 0xFF06B7, roughness: .1 }),
+        new THREE.MeshStandardMaterial({ color: 0x750E21, roughness: .1 }),
+        new THREE.MeshStandardMaterial({ color: 0x2980b9, roughness: .1 }),
         new THREE.MeshStandardMaterial({ color: 0x2ecc71, roughness: 0 }),
         new THREE.MeshStandardMaterial({ color: 0xf1c40f, roughness: 0.4 }),
         new THREE.MeshStandardMaterial({ color: 0xe74c3c, roughness: 0.1 }),
         new THREE.MeshStandardMaterial({ color: 0x8e44ad, roughness: 0.1 }),
         new THREE.MeshStandardMaterial({ color: 0x1abc9c, roughness: 0.1 }),
-        new THREE.MeshStandardMaterial({ color: 0x864AF9, metalness: 1, roughness: 0}),
-        new THREE.MeshStandardMaterial({ color: 0xFE7A36, metalness: .5, roughness: .4}),
-        new THREE.MeshStandardMaterial({ color: 0x2ecc71, metalness: 1, roughness: .3}),
-        new THREE.MeshStandardMaterial({ color: 0x2980b9, metalness: 0.5, roughness: 0,}),
-        new THREE.MeshStandardMaterial({ color: 0x2c3e50, metalness: 0.5, roughness: 0.1,}),
+        new THREE.MeshStandardMaterial({ color: 0x864AF9, metalness: 1, roughness: 0 }),
+        new THREE.MeshStandardMaterial({ color: 0xFE7A36, metalness: .5, roughness: .4 }),
+        new THREE.MeshStandardMaterial({ color: 0x2ecc71, metalness: 1, roughness: .3 }),
+        new THREE.MeshStandardMaterial({ color: 0x2980b9, metalness: 0.5, roughness: 0, }),
+        new THREE.MeshStandardMaterial({ color: 0x2c3e50, metalness: 0.5, roughness: 0.1, }),
     ];
 
     const soundEffects = [
@@ -85,20 +84,20 @@ function Geometries() {
         new Audio("/sound/audio8.ogg"),
     ]
 
-    return geometries.map(({position, r, geometry}) => (
+    return geometries.map(({ position, r, geometry }) => (
         <Geometry
-        key={JSON.stringify(position)}
-        position={position.map((p) => p*2)}
-        soundEffects={soundEffects}
-        geometry={geometry}
-        materials={materials}
-        r={r}
+            key={JSON.stringify(position)}
+            position={position.map((p) => p * 2)}
+            soundEffects={soundEffects}
+            geometry={geometry}
+            materials={materials}
+            r={r}
         />
     ))
 }
 
 
-function Geometry({r,position,geometry,materials,soundEffects}){
+function Geometry({ r, position, geometry, materials, soundEffects }) {
     const meshRef = useRef()
     const [visible, setVisible] = useState(false)
 
@@ -108,12 +107,12 @@ function Geometry({r,position,geometry,materials,soundEffects}){
         return gsap.utils.random(materials)
     };
 
-    function handleClick(e){
+    function handleClick(e) {
         const mesh = e.object;
 
         gsap.utils.random(soundEffects).play();
 
-        gsap.to(mesh.rotation,{
+        gsap.to(mesh.rotation, {
             x: `+=${gsap.utils.random(0, 2)}`,
             y: `+=${gsap.utils.random(0, 2)}`,
             z: `+=${gsap.utils.random(0, 2)}`,
@@ -136,10 +135,10 @@ function Geometry({r,position,geometry,materials,soundEffects}){
     useEffect(() => {
         let ctx = gsap.context(() => {
             setVisible(true)
-            gsap.from(meshRef.current.scale,{
-                x:0,
-                y:0,
-                z:0,
+            gsap.from(meshRef.current.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
                 duration: 1,
                 ease: "elastic.out(1,0.3)",
                 delay: .3,
@@ -152,12 +151,12 @@ function Geometry({r,position,geometry,materials,soundEffects}){
         <group position={position} ref={meshRef}>
             <Float speed={5 * r} rotationIntensity={6 * r} floatIntensity={5 * r}>
                 <mesh
-                geometry={geometry}
-                onClick={handleClick}
-                onPointerOver={handlePointerOver}
-                onPointerOut={handlePointerOut}
-                visible={visible}
-                material={startingMaterial}
+                    geometry={geometry}
+                    onClick={handleClick}
+                    onPointerOver={handlePointerOver}
+                    onPointerOut={handlePointerOut}
+                    visible={visible}
+                    material={startingMaterial}
                 />
             </Float>
         </group>

@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "special_work": {
+              "type": "SharedSlice"
+            },
             "hero": {
               "type": "SharedSlice"
             }

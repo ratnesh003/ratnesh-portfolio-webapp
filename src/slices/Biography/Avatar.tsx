@@ -65,6 +65,7 @@ export default function Avatar({
                 );
             };
         }, component);
+        return () => ctx.revert();
     }, []);
 
     return (
@@ -73,7 +74,7 @@ export default function Avatar({
                 <PrismicNextImage
                     field={image}
                     className="avatar-image h-full w-full object-fill"
-                    imgixParams={{ q:90 }}
+                    imgixParams={{ q:40 }}
                 />
                 <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
             </div>
